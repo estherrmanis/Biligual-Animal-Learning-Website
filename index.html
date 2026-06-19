@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐾 Animal Flashcard</title>
+  <meta name="description" content="Interactive Animal Flashcard — learn about animals with fun flip cards, sounds, and a quiz mode!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loader" class="loader">
+    <div class="loader-inner">
+      <div class="loader-paw">🐾</div>
+      <p class="loader-text">Loading...</p>
+    </div>
+  </div>
+
+  <!-- Background blobs -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <div class="app-wrapper">
+
+    <!-- Header -->
+    <header class="app-header">
+      <h1 class="app-title">🐾 Animal Flashcard</h1>
+      <p class="app-subtitle">Tap a card to discover the animal!</p>
+
+      <!-- Mode Toggle -->
+      <div class="mode-toggle">
+        <button id="btn-flashcard" class="mode-btn active" onclick="switchMode('flashcard')">📚 Flashcard</button>
+        <button id="btn-quiz" class="mode-btn" onclick="switchMode('quiz')">🎯 Quiz Mode</button>
+      </div>
+    </header>
+
+    <!-- ======== FLASHCARD MODE ======== -->
+    <section id="flashcard-mode" class="mode-section">
+      <div id="card-grid" class="card-grid">
+        <!-- Cards injected by JS -->
+      </div>
+    </section>
+
+    <!-- ======== QUIZ MODE ======== -->
+    <section id="quiz-mode" class="mode-section hidden">
+      <div class="quiz-container">
+
+        <!-- Score Bar -->
+        <div class="quiz-scorebar">
+          <div class="score-chip">
+            <span class="score-label">Score</span>
+            <span id="quiz-score" class="score-value">0</span>
+          </div>
+          <div class="score-chip">
+            <span class="score-label">Round</span>
+            <span id="quiz-round" class="score-value">1 / 10</span>
+          </div>
+        </div>
+
+        <!-- Quiz Card -->
+        <div class="quiz-card glass-card">
+          <div class="quiz-icon">🔊</div>
+          <h2 class="quiz-question">Whose sound is this?</h2>
+          <button id="play-sound-btn" class="play-btn pulse-btn" onclick="playQuizSound()">
+            <span class="btn-icon">▶</span> Play Sound
+          </button>
+          <div id="quiz-options" class="quiz-options">
+            <!-- Options injected by JS -->
+          </div>
+          <div id="quiz-feedback" class="quiz-feedback hidden"></div>
+          <button id="next-btn" class="next-btn hidden" onclick="nextQuiz()">Next →</button>
+        </div>
+
+        <!-- End Screen -->
+        <div id="quiz-end" class="quiz-end hidden glass-card">
+          <div class="end-emoji">🏆</div>
+          <h2 class="end-title">Quiz Done!</h2>
+          <p id="end-message" class="end-msg"></p>
+          <button class="restart-btn" onclick="startQuiz()">Play Again 🔄</button>
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- /app-wrapper -->
+
+  <script src="script.js"></script>
+</body>
+</html>
